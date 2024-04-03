@@ -1,0 +1,30 @@
+{
+  "name": "@plato/lib",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules"
+  },
+  "dependencies": {
+    "@next-auth/prisma-adapter": "^1.0.7",
+    "@plato/dayjs": "workspace:*",
+    "bcryptjs": "^2.4.3",
+    "html-escaper": "^3.0.3",
+    "nanoid": "^4.0.2",
+    "next-auth": "^4.22.1",
+    "zod": "^3.22.1"
+  },
+  "devDependencies": {
+    "@plato/eslint-config": "workspace:*",
+    "@plato/prettier-config": "workspace:*",
+    "@plato/tsconfig": "workspace:*",
+    "@plato/types": "workspace:*"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@plato/eslint-config/base"
+    ]
+  },
+  "prettier": "@plato/prettier-config"
+}

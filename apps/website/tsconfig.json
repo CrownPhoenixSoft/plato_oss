@@ -1,0 +1,27 @@
+{
+  "extends": "@plato/tsconfig/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "tsBuildInfoFile": "node_modules/.cache/tsbuildinfo.json",
+    "strictNullChecks": true
+  },
+  "include": [
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "../../packages/types/*.d.ts",
+    "../../packages/types/next-auth.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "*.mjs",
+    "src"
+  ],
+  "exclude": ["node_modules"]
+}

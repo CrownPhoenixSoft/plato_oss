@@ -1,0 +1,19 @@
+{
+  "name": "@plato/types",
+  "main": "index.ts",
+  "types": "index.ts",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "next-auth": "^4.22.1",
+    "ts-json-schema-generator": "1.1.2"
+  },
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "lint": "eslint ./**/*.ts"
+  },
+  "devDependencies": {
+    "@plato/eslint-config": "workspace:*",
+    "@plato/tsconfig": "workspace:*"
+  }
+}

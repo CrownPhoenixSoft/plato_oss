@@ -1,0 +1,36 @@
+{
+  "name": "@plato/root",
+  "version": "1.0.0",
+    "keywords": [],
+    "author": "CrownPhoenix",
+    "engines": {
+      "node": ">=21.7.1"
+    },
+    "packageManager": "pnpm@8.15.5",
+    "pnpm": {
+      "packageExtensions": {
+        "iconv": {
+          "optionalDependencies": {
+            "node-gyp": "*"
+          }
+        }
+      }
+    },
+    "scripts": {
+    "build": "turbo build",
+    "clean": "git clean -xdf node_modules dist .next",
+    "clean:workspaces": "turbo clean",
+    "dev": "turbo dev --parallel --concurrency 15",
+    "dev:web": "turbo dev --parallel --filter=@plato/website",
+    "dev:emails": "turbo dev --parallel --filter=@plato/emails",
+    "format": "prettier --write \"**/*.{js,cjs,mjs,ts,tsx,md,json}\" --ignore-path .gitignore",
+    "lint": "turbo lint && manypkg check",
+    "lint:fix": "turbo lint:fix && manypkg fix",
+    "type-check": "turbo type-check"
+  },
+  "dependencies": {
+    "dotenv-cli": "^7.3.0",
+    "turbo": "^1.11.3"
+  },
+  "prettier": "@plato/prettier-config"
+}

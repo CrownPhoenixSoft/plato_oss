@@ -1,0 +1,6 @@
+{
+    "extends": "@plato/tsconfig/base.json",
+    "compilerOptions": {
+        "rootDir": "."
+    }
+}

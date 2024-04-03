@@ -1,0 +1,35 @@
+{
+  "name": "@plato/emails",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules",
+    "dev": "pnpm with-env email dev -p 3101 --dir templates --",
+    "export": "email export",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@plato/lib": "workspace:*",
+    "@plato/dayjs": "workspace:*",
+    "@react-email/components": "0.0.15",
+    "react-email": "2.1.0",
+    "resend": "^3.2.0"
+  },
+  "devDependencies": {
+    "@plato/eslint-config": "workspace:*",
+    "@plato/prettier-config": "workspace:*",
+    "@plato/tsconfig": "workspace:*",
+    "@plato/types": "workspace:*",
+    "@plato/tailwind-config": "workspace:*",
+    "@types/nodemailer": "^6.4.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "@plato/eslint-config/base",
+      "@plato/eslint-config/nextjs",
+      "@plato/eslint-config/react"
+    ]
+  },
+  "prettier": "@plato/prettier-config"
+}
