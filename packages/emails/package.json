@@ -6,7 +6,7 @@
     "clean": "rm -rf .turbo node_modules",
     "dev": "pnpm with-env email dev -p 3101 --dir templates --",
     "export": "email export",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "dotenv -e ../../.env.local --"
   },
   "dependencies": {
     "@plato/lib": "workspace:*",

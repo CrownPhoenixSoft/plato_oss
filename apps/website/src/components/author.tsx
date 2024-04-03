@@ -14,11 +14,11 @@ export default async function Author({
   const authors: { [key: string]: { name: string; image: string } } = {
     abdullah: {
       name: "Abdullah",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/steventey.jpg",
+      // image: "https://d2vwwcvoksz7ty.cloudfront.net/author/steventey.jpg",
     },
     mohammed: {
       name: "Mohammed - CEO",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/fmerian.jpg",
+      // image: "https://d2vwwcvoksz7ty.cloudfront.net/author/fmerian.jpg",
     },
   };
 
@@ -54,7 +54,7 @@ export default async function Author({
     </div>
   ) : (
     <Link
-      href={`https://twitter.com/${username}`}
+     href="#"
       className="group flex items-center space-x-3"
       target="_blank"
       rel="noopener noreferrer"
