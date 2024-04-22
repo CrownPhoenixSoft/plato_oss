@@ -1,11 +1,13 @@
+import { useState } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import FAQ from "@/components/faq";
 import Pricing from "@/components/pricing";
 
-export default function Page(props: PageProps) {
+export default async function Page(props: PageProps) {
   return <>Empty</>;
-  // const appInfo = getAppInfoFromSlug(props.params.app);
+
+  // const appInfo = await getAppInfoFromSlug(props.params.app);
   // if (!appInfo) notFound();
 
   // return (
