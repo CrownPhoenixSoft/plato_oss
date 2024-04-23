@@ -20,10 +20,6 @@ export default {
       borderColor: {
         DEFAULT: "hsl(var(--border) / <alpha-value>)",
       },
-      backgroundImage: {
-        "text-linear":
-          "linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);",
-      },
       colors: {
         border: "hsl(var(--border) / <alpha-value>)",
         input: "hsl(var(--input) / <alpha-value>)",

@@ -8,7 +8,7 @@ import { buttonVariants } from "@plato/ui/button";
 export default function NotFound() {
   return (
     <>
-      <MaxWidthWrapper className="flex h-[60vh] items-center justify-center">
+      <MaxWidthWrapper className="flex h-[80vh] items-center justify-center sm:h-[60vh]">
         <div className=" grid items-center sm:flex">
           <Image
             width={1400}
@@ -21,8 +21,8 @@ export default function NotFound() {
               Oops!
             </span>
             <span className=" text-sm font-medium sm:text-2xl">
-              Sorry The Page You're looking for doesnt exist. if you think you
-              something is broken, report a problem.
+              Sorry, the page you're looking for doesn't exist. If you think
+              something is broken, please report the problem.
             </span>
             <div className="mt-4 flex w-full items-center gap-4">
               <button

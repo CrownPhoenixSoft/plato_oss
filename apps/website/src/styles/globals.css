@@ -72,7 +72,7 @@
     @apply border-border;
   }
   body {
-    @apply font-plato text-foreground;
+    @apply bg-background font-plato text-foreground;
   }
 
   /* [data-mdx-container] {
