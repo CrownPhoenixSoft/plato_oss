@@ -4,8 +4,6 @@ import { notFound } from "next/navigation";
 import FAQ from "@/components/faq";
 import Pricing from "@/components/pricing";
 
-import { APP_URL } from "@plato/lib/constants";
-
 // async function getAppInfoFromSlug(slug) {
 //   try {
 //     // Define the API endpoint or database query using the slug
