@@ -6,31 +6,29 @@ import Pricing from "@/components/pricing";
 
 import { APP_URL } from "@plato/lib/constants";
 
-import NotFound from "../not-found";
+// async function getAppInfoFromSlug(slug) {
+//   try {
+//     // Define the API endpoint or database query using the slug
+//     // For example, assuming you have an API endpoint to get app info:
+//     const response = await fetch(`${APP_URL}/${slug}`);
 
-async function getAppInfoFromSlug(slug) {
-  try {
-    // Define the API endpoint or database query using the slug
-    // For example, assuming you have an API endpoint to get app info:
-    const response = await fetch(`${APP_URL}/${slug}`);
+//     // Check if the response status is not OK (e.g., 404 or other errors)
+//     if (!response.ok) {
+//       return null; // Return null if the response is not successful
+//     }
 
-    // Check if the response status is not OK (e.g., 404 or other errors)
-    if (!response.ok) {
-      return null; // Return null if the response is not successful
-    }
-
-    // Parse the response JSON and return the app information
-    const appInfo = await response.json();
-  } catch (error) {
-    // Handle any errors that occurred during the request
-    console.error("Error fetching app info:", error);
-    return null; // Return null if there was an error
-  }
-}
+//     // Parse the response JSON and return the app information
+//     const appInfo = await response.json();
+//   } catch (error) {
+//     // Handle any errors that occurred during the request
+//     console.error("Error fetching app info:", error);
+//     return null; // Return null if there was an error
+//   }
+// }
 
 export default async function Page(props: PageProps) {
   const appInfo = await getAppInfoFromSlug(props.params.app);
-  if (!appInfo) <NotFound />;
+  if (!appInfo) notFound();
   // return (
   //   <>
   //     <Pricing
