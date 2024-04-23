@@ -16,7 +16,7 @@ export default function NotFound() {
             src="/_static/whale.svg"
             alt="whale"
           />
-          <div className="flex flex-col items-center justify-center gap-2 sm:items-start">
+          <div className="flex flex-col items-center justify-center gap-2 text-center sm:items-start sm:text-start">
             <span className="text-gradient text-4xl font-bold sm:text-7xl">
               Oops!
             </span>
@@ -24,15 +24,7 @@ export default function NotFound() {
               Sorry, the page you're looking for doesn't exist. If you think
               something is broken, please report the problem.
             </span>
-            <div className="mt-4 flex w-full items-center gap-4">
-              <button
-                className={cn(
-                  buttonVariants({ variant: "outline" }),
-                  "rounded-full",
-                )}
-              >
-                Report a Problem
-              </button>
+            <div className="mx-auto mt-4 flex w-fit items-center gap-4">
               <button
                 className={cn(
                   buttonVariants({ variant: "default" }),
@@ -40,6 +32,15 @@ export default function NotFound() {
                 )}
               >
                 Home
+              </button>
+
+              <button
+                className={cn(
+                  buttonVariants({ variant: "outline" }),
+                  "rounded-full",
+                )}
+              >
+                Report a Problem
               </button>
             </div>
           </div>
