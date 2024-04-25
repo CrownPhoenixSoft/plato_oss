@@ -1,13 +1,32 @@
+import { useState } from "react";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import FAQ from "@/components/faq";
 import Pricing from "@/components/pricing";
 
-export default function Page(props: PageProps) {
-  return <>Empty</>;
-  // const appInfo = getAppInfoFromSlug(props.params.app);
-  // if (!appInfo) notFound();
+// async function getAppInfoFromSlug(slug) {
+//   try {
+//     // Define the API endpoint or database query using the slug
+//     // For example, assuming you have an API endpoint to get app info:
+//     const response = await fetch(`${APP_URL}/${slug}`);
 
+//     // Check if the response status is not OK (e.g., 404 or other errors)
+//     if (!response.ok) {
+//       return null; // Return null if the response is not successful
+//     }
+
+//     // Parse the response JSON and return the app information
+//     const appInfo = await response.json();
+//   } catch (error) {
+//     // Handle any errors that occurred during the request
+//     console.error("Error fetching app info:", error);
+//     return null; // Return null if there was an error
+//   }
+// }
+
+export default async function Page(props: PageProps) {
+  const appInfo = await getAppInfoFromSlug(props.params.app);
+  if (!appInfo) notFound();
   // return (
   //   <>
   //     <Pricing
