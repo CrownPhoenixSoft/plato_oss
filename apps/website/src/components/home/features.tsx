@@ -12,6 +12,7 @@ import {
 } from "@plato/ui/accordion";
 import { Button } from "@plato/ui/button";
 
+import { ImageCarousel } from "../carousel";
 import MaxWidthWrapper from "../max-width-wrapper";
 
 const featureList = [
