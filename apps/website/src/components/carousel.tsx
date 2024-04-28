@@ -53,7 +53,7 @@ export const ImageCarousel = () => {
   ];
 
   return (
-    <section className="mb-8 mt-24 flex items-center justify-center gap-12">
+    <section className="mb-8 mt-24 flex flex-col items-center justify-center gap-12 md:flex-row">
       {images.map((image, index) => (
         <div
           key={index}
