@@ -53,22 +53,29 @@ export const ImageCarousel = () => {
   ];
 
   return (
-    <section className="mb-8 mt-24 flex flex-col items-center justify-center gap-12 md:flex-row">
-      {images.map((image, index) => (
-        <div
-          key={index}
-          className="relative h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800"
-        >
-          <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-          <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-          <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-          <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
-          <ImageItem
-            initialImage={image.initialImage}
-            hoverImage={image.hoverImage}
-          />
-        </div>
-      ))}
+    <section className="mb-8 mt-24 flex h-screen flex-col items-center justify-center gap-12">
+      <h2 className="font-display bg-gradient-to-r from-primary to-secondary-foreground bg-clip-text text-center text-4xl font-extrabold leading-tight text-transparent sm:text-5xl sm:leading-tight">
+        <span className="">Flexible</span>
+        <br />
+        customization options
+      </h2>
+      <div className="flex items-center justify-center gap-12 ">
+        {images.map((image, index) => (
+          <div
+            key={index}
+            className="relative  h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800"
+          >
+            <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+            <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+            <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+            <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
+            <ImageItem
+              initialImage={image.initialImage}
+              hoverImage={image.hoverImage}
+            />
+          </div>
+        ))}
+      </div>
     </section>
   );
 };
