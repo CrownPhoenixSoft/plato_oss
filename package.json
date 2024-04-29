@@ -1,22 +1,22 @@
 {
   "name": "@plato/root",
   "version": "1.0.0",
-    "keywords": [],
-    "author": "CrownPhoenix",
-    "engines": {
-      "node": ">=21.7.1"
-    },
-    "packageManager": "pnpm@8.15.5",
-    "pnpm": {
-      "packageExtensions": {
-        "iconv": {
-          "optionalDependencies": {
-            "node-gyp": "*"
-          }
+  "keywords": [],
+  "author": "CrownPhoenix",
+  "engines": {
+    "node": ">=21.7.1"
+  },
+  "packageManager": "pnpm@8.15.5",
+  "pnpm": {
+    "packageExtensions": {
+      "iconv": {
+        "optionalDependencies": {
+          "node-gyp": "*"
         }
       }
-    },
-    "scripts": {
+    }
+  },
+  "scripts": {
     "build": "turbo build",
     "clean": "git clean -xdf node_modules dist .next",
     "clean:workspaces": "turbo clean",
@@ -30,7 +30,12 @@
   },
   "dependencies": {
     "dotenv-cli": "^7.3.0",
+    "embla-carousel-react": "^8.0.0",
+    "tailwind": "^4.0.0",
     "turbo": "^1.11.3"
   },
-  "prettier": "@plato/prettier-config"
+  "prettier": "@plato/prettier-config",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
 }

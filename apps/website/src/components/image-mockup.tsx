@@ -2,6 +2,14 @@
 
 import { useEffect, useState } from "react";
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../../../../packages/ui/src/carousel";
+
 const ImageItem = ({ initialImage, hoverImage }) => {
   const [isHovered, setIsHovered] = useState(false);
   const handleMouseEnter = () => setIsHovered(true);
@@ -32,7 +40,7 @@ const ImageItem = ({ initialImage, hoverImage }) => {
   );
 };
 
-export const ImageCarousel = () => {
+export const ImageMockup = () => {
   const images = [
     {
       initialImage:
@@ -62,7 +70,7 @@ export const ImageCarousel = () => {
     },
   ];
 
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextImage = () => {
     console.log("nexct");
@@ -93,31 +101,34 @@ export const ImageCarousel = () => {
         <br />
         customization options
       </h2>
-      <div className="carousel-container relative flex items-center justify-center gap-12 overflow-hidden border ">
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className={`carousel-item-${index === currentIndex ? "active" : ""} relative h-[600px] w-[330px] overflow-hidden rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-              transition: "transform 0.5s ease-in-out",
-            }}
-          >
-            <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-            <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-            <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-            <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
-            <ImageItem
-              initialImage={image.initialImage}
-              hoverImage={image.hoverImage}
-            />
-          </div>
-        ))}
-      </div>
-      <button className="absolute right-0" onClick={prevImage}>
-        Previous
-      </button>
-      <button onClick={nextImage}>Next</button>
+      <Carousel className="max-w-xl ">
+        <div className=" ">
+          <CarouselContent className="w-full">
+            {images.map((image, index) => (
+              <CarouselItem key={index}>
+                <div
+                  className={`carousel-item-${index === currentIndex ? "active" : ""} relative mx-auto h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
+                  // style={{
+                  //   transform: `translateX(-${currentIndex * 100}%)`,
+                  //   transition: "transform 0.5s ease-in-out",
+                  // }}
+                >
+                  <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                  <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                  <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                  <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
+                  <ImageItem
+                    initialImage={image.initialImage}
+                    hoverImage={image.hoverImage}
+                  />
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </div>
+        <CarouselNext className="" variant={"default"} />
+        <CarouselPrevious variant={"default"} />
+      </Carousel>
     </section>
   );
 };

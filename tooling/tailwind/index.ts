@@ -7,6 +7,7 @@ export default {
     "src/**/*.{ts,tsx}",
     "components/**/*.{ts,tsx}",
     "modules/**/*.{ts,tsx}",
+    "./@/**/*.{ts,tsx}",
   ],
   theme: {
     container: {
