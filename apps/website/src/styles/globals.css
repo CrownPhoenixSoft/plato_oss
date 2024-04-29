@@ -98,6 +98,15 @@
       rgba(9, 9, 121, 1) 35%,
       rgba(0, 212, 255, 1) 100%
     );
+    .carousel-container {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+    }
+    .carousel-item {
+      flex: 0 0 100%;
+      transition: transform 0.5s ease-in-out;
+    }
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     color: transparent;

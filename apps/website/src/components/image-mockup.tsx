@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ImageItem = ({ initialImage, hoverImage }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -50,7 +50,41 @@ export const ImageCarousel = () => {
       hoverImage:
         "https://plus.unsplash.com/premium_photo-1713803863170-436be4feb510?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
+    {
+      initialImage: "/_static/whale.svg",
+      hoverImage:
+        "https://plus.unsplash.com/premium_photo-1713803863170-436be4feb510?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      initialImage: "/_static/whale.svg",
+      hoverImage:
+        "https://plus.unsplash.com/premium_photo-1713803863170-436be4feb510?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
   ];
+
+  const [currentIndex, setCurrentIndex] = useState(1);
+
+  const nextImage = () => {
+    console.log("nexct");
+
+    setCurrentIndex((currentIndex + 1) % images.length);
+  };
+
+  const prevImage = () => {
+    setCurrentIndex((currentIndex - 1 + images.length) % images.length);
+  };
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      nextImage();
+    } else if (event.key === "ArrowLeft") {
+      prevImage();
+    }
+  };
+  useEffect(() => {
+    // This code will run after currentIndex is updated
+    console.log(`Current index: ${currentIndex}`);
+    // You can perform additional actions here, such as fetching new data based on the currentIndex
+  }, [currentIndex]);
 
   return (
     <section className="mb-8 mt-24 flex h-screen flex-col items-center justify-center gap-12">
@@ -59,11 +93,15 @@ export const ImageCarousel = () => {
         <br />
         customization options
       </h2>
-      <div className="flex items-center justify-center gap-12 ">
+      <div className="carousel-container relative flex items-center justify-center gap-12 overflow-hidden border ">
         {images.map((image, index) => (
           <div
             key={index}
-            className="relative  h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800"
+            className={`carousel-item-${index === currentIndex ? "active" : ""} relative h-[600px] w-[330px] overflow-hidden rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
+            style={{
+              transform: `translateX(-${currentIndex * 100}%)`,
+              transition: "transform 0.5s ease-in-out",
+            }}
           >
             <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
             <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
@@ -76,6 +114,10 @@ export const ImageCarousel = () => {
           </div>
         ))}
       </div>
+      <button className="absolute right-0" onClick={prevImage}>
+        Previous
+      </button>
+      <button onClick={nextImage}>Next</button>
     </section>
   );
 };
