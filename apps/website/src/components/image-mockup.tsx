@@ -20,7 +20,7 @@ const ImageItem = ({ initialImage, hoverImage }) => {
         <img
           src={initialImage}
           alt="initial"
-          className="absolute inset-0 h-full w-full cursor-pointer object-contain"
+          className="absolute inset-0 top-2 h-[95%] w-full cursor-pointer object-cover"
           style={{
             transition: "opacity 0.5s ease-in-out",
             opacity: isHovered ? 0 : 1,
@@ -29,7 +29,7 @@ const ImageItem = ({ initialImage, hoverImage }) => {
         <img
           src={hoverImage}
           alt="hover"
-          className="absolute inset-0 h-full w-full cursor-pointer object-contain"
+          className="absolute inset-0 top-2 h-[95%] w-full cursor-pointer  object-cover"
           style={{
             transition: "opacity 0.5s ease-in-out",
             opacity: isHovered ? 1 : 0,
@@ -63,15 +63,10 @@ export const ImageMockup = () => {
       hoverImage:
         "https://plus.unsplash.com/premium_photo-1713803863170-436be4feb510?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     },
-    {
-      initialImage: "/_static/whale.svg",
-      hoverImage:
-        "https://plus.unsplash.com/premium_photo-1713803863170-436be4feb510?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const nextImage = () => {
     console.log("nexct");
 
@@ -94,6 +89,16 @@ export const ImageMockup = () => {
     // You can perform additional actions here, such as fetching new data based on the currentIndex
   }, [currentIndex]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth <= 786);
+    };
+
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  });
   return (
     <section className="mb-8 mt-24 flex h-screen flex-col items-center justify-center gap-12">
       <h2 className="font-display bg-gradient-to-r from-primary to-secondary-foreground bg-clip-text text-center text-4xl font-extrabold leading-tight text-transparent sm:text-5xl sm:leading-tight">
@@ -101,27 +106,85 @@ export const ImageMockup = () => {
         <br />
         customization options
       </h2>
-      <Carousel className="max-w-xl ">
+      <Carousel className="max-w-full md:max-w-4xl">
         <div className=" ">
-          <CarouselContent className="w-full">
+          <CarouselContent className="overlow-x-hidden flex">
             {images.map((image, index) => (
-              <CarouselItem key={index}>
-                <div
-                  className={`carousel-item-${index === currentIndex ? "active" : ""} relative mx-auto h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
-                  // style={{
-                  //   transform: `translateX(-${currentIndex * 100}%)`,
-                  //   transition: "transform 0.5s ease-in-out",
-                  // }}
-                >
-                  <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-                  <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-                  <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
-                  <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
-                  <ImageItem
-                    initialImage={image.initialImage}
-                    hoverImage={image.hoverImage}
-                  />
-                </div>
+              <CarouselItem
+                key={index}
+                className="md:w-full/3 flex w-full  flex-shrink-0 gap-6"
+              >
+                {isSmallScreen ? (
+                  <>
+                    <div
+                      className={`carousel-item-${index === currentIndex ? "active" : ""}  relative mx-auto h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
+                      // style={{
+                      //   transform: `translateX(-${currentIndex * 100}%)`,
+                      //   transition: "transform 0.5s ease-in-out",
+                      // }}
+                    >
+                      <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
+                      <ImageItem
+                        initialImage={image.initialImage}
+                        hoverImage={image.hoverImage}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div
+                      className={`carousel-item-${index === currentIndex ? "active" : ""}  relative mx-auto h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
+                      // style={{
+                      //   transform: `translateX(-${currentIndex * 100}%)`,
+                      //   transition: "transform 0.5s ease-in-out",
+                      // }}
+                    >
+                      <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
+                      <ImageItem
+                        initialImage={image.initialImage}
+                        hoverImage={image.hoverImage}
+                      />
+                    </div>
+                    <div
+                      className={`carousel-item-${index === currentIndex ? "active" : ""}  relative mx-auto h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
+                      // style={{
+                      //   transform: `translateX(-${currentIndex * 100}%)`,
+                      //   transition: "transform 0.5s ease-in-out",
+                      // }}
+                    >
+                      <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
+                      <ImageItem
+                        initialImage={image.initialImage}
+                        hoverImage={image.hoverImage}
+                      />
+                    </div>
+                    <div
+                      className={`carousel-item-${index === currentIndex ? "active" : ""}  relative mx-auto h-[600px] w-[330px] rounded-[2.5rem] border-[14px] border-gray-800 bg-gray-800 dark:border-gray-800`}
+                      // style={{
+                      //   transform: `translateX(-${currentIndex * 100}%)`,
+                      //   transition: "transform 0.5s ease-in-out",
+                      // }}
+                    >
+                      <div className="absolute -left-[17px] top-[72px] h-[32px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[124px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -left-[17px] top-[178px] h-[46px] w-[3px] rounded-l-lg bg-gray-800 dark:bg-gray-800" />
+                      <div className="absolute -right-[17px] top-[142px] h-[64px] w-[3px] rounded-r-lg bg-gray-800 dark:bg-gray-800" />
+                      <ImageItem
+                        initialImage={image.initialImage}
+                        hoverImage={image.hoverImage}
+                      />
+                    </div>
+                  </>
+                )}
               </CarouselItem>
             ))}
           </CarouselContent>
